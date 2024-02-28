@@ -1,0 +1,4 @@
+0 Greenhouse Gas
+1 Organic Waste
+2 Inorganic Waste
+3 Chemical Waste
