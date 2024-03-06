@@ -1,24 +1,29 @@
 import discord
 import random
 from discord.ext import commands
+from discord import Intents
 
 from classification import classify
 
-intents = discord.Intents.default()
-intents.message_content = True
+# intents = Intents.all()
+# intents.message_content = True
+intents = Intents.all()
 bot = commands.Bot(command_prefix=";", intents=intents)
+
+uploaded_images = {}
 
 @bot.event
 async def on_ready():
     print(f'We have logged in as {bot.user}')
 
-@bot.command("classify")
+@bot.command()
 async def classify(ctx):
     if ctx.message.attachments:
         for attachment in ctx.message.attachments:
             image_path = attachment.filename
-            await attachment.save(f"./{image_path}")
-            result = classify(model_path="res/classify/keras_model.h5", labels_path="res/classify/labels.txt", img_path=image_path)
+            image_url = attachment.url
+            await attachment.save(f"./{attachment.filename}")
+            result = classify(model_path="res/classify/keras_model.h5", labels_path="res/classify/labels.txt", img_path=f"./{attachment.filename}")
             await ctx.send(result)
     else:
         await ctx.send("You forgot to upload the image >:(")
