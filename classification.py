@@ -40,7 +40,3 @@ def classify(model_path, labels_path, image_path):
     confidence_score = prediction[0][index]
 
     return class_name[2:], confidence_score
-
-
-# if __name__ =="__main__":
-#     classify(model_path="res\classify\keras_model.h5", labels_path="res\classify\labels.txt", image_path="res\img\chemical_waste\sample1.jpg")
