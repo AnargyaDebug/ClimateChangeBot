@@ -23,7 +23,7 @@ async def classify(ctx):
             image_path = attachment.filename
             await attachment.save(f"./{image_path}")
             result = classify(model_path="res/classify/keras_model.h5", labels_path="res/classify/labels.txt", img_path=f"./{attachment.filename}")
-            await ctx.send(result)
+            await ctx.send(result[0])
     else:
         await ctx.send("You forgot to upload the image >:(")
 
@@ -72,18 +72,18 @@ async def organic_waste(ctx):
 @bot.command("recycletrashtips")
 async def recycling_tips(ctx):
     await ctx.send("""
-                   Recycling or reusing things like plastics is a great way to battle pollution and climate change! Here are 10 tips on how to do so:
-                   Paper Power: Recycling paper means we can use it again to make new paepr. So, don't throw away those old drawings, school papers, or newspapers. Put them in the recycling bin!
-                   Clever Cans: Aluminum cans, like soda cans, are like superheroes of recycling. They can be turned into new cans really easily. So, collect them and put them in the recycling bin.
-                   Plastic Love: Some plastic bottles and containers can be recycled, but not all of them. Look for a recycling symbol on the bottom with a number inside. If it's a 1, 2, or 5, you can recycle it. If not, it goes in the regular trash.
-                   Glass Goodness: Glass bottles and jars are strong and can be recycled over and over. So, when you're done with a glass jar of peanut butter or a glass bottle of juice, rinse it out and recycle it.
-                   Cardboard Fun: Big cardboard boxes from packages or pizza can be recycled. Flatten them and put them in the recycling bin. It's like giving them a second life!
+                   1. Recycling or reusing things like plastics is a great way to battle pollution and climate change! Here are 10 tips on how to do so:
+                   2. Paper Power: Recycling paper means we can use it again to make new paepr. So, don't throw away those old drawings, school papers, or newspapers. Put them in the recycling bin!
+                   3. Clever Cans: Aluminum cans, like soda cans, are like superheroes of recycling. They can be turned into new cans really easily. So, collect them and put them in the recycling bin.
+                   4. Plastic Love: Some plastic bottles and containers can be recycled, but not all of them. Look for a recycling symbol on the bottom with a number inside. If it's a 1, 2, or 5, you can recycle it. If not, it goes in the regular trash.
+                   5. Glass Goodness: Glass bottles and jars are strong and can be recycled over and over. So, when you're done with a glass jar of peanut butter or a glass bottle of juice, rinse it out and recycle it.
+                   6. Cardboard Fun: Big cardboard boxes from packages or pizza can be recycled. Flatten them and put them in the recycling bin. It's like giving them a second life!
                   """)
     await ctx.send("""
-                   No Greasy Stuff: Things covered in food or grease, like pizza boxes, can't be recycled because they make the other stuff dirty. So, it's better to put them in the trash.
-                   Battery Care: Batteries from toys or gadgets can be harmful if not recycled properly. Look for special drop-off spots for old batteries or electronic waste.
-                   Reduce and Reuse: Try to use less stuff that needs to be recycled. Reuse items when you can, like turning an old jar into a pencil holder instead of buying a new one.
-                   Paper vs. Plastic: At the store, choose reusable bags or paper bags instead of single-use plastic bags. This helps reduce plastic waste.
-                   Learn and Teach: Share what you know about recycling with your friends and family. The more people know, the better we can take care of our planet!
+                   7. No Greasy Stuff: Things covered in food or grease, like pizza boxes, can't be recycled because they make the other stuff dirty. So, it's better to put them in the trash.
+                   8. Battery Care: Batteries from toys or gadgets can be harmful if not recycled properly. Look for special drop-off spots for old batteries or electronic waste.
+                   9. Reduce and Reuse: Try to use less stuff that needs to be recycled. Reuse items when you can, like turning an old jar into a pencil holder instead of buying a new one.
+                   10. Paper vs. Plastic: At the store, choose reusable bags or paper bags instead of single-use plastic bags. This helps reduce plastic waste.
+                   11. Learn and Teach: Share what you know about recycling with your friends and family. The more people know, the better we can take care of our planet!
                    Remember, recycling is like giving things a second chance to be useful. It's a great way to help the environment and make the world a cleaner, better place.
                   """)
