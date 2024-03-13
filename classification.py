@@ -2,7 +2,7 @@ from keras.models import load_model  # TensorFlow is required for Keras to work
 from PIL import Image, ImageOps  # Install pillow instead of PIL
 import numpy as np
 
-def classify(labels_path, img_path, model_path):
+def classify(model_path, labels_path, image_path):
     # Disable scientific notation for clarity
     np.set_printoptions(suppress=True)
     
@@ -18,11 +18,11 @@ def classify(labels_path, img_path, model_path):
     data = np.ndarray(shape=(1, 224, 224, 3), dtype=np.float32)
 
     # Replace this with the path to your image
-    image = Image.open(img_path).convert("RGB")
+    image = Image.open(image_path).convert("RGB")
 
     # resizing the image to be at least 224x224 and then cropping from the center
     size = (224, 224)
-    image = ImageOps.fit(image, size, Image.Resampling.LANCZOS)
+    image = ImageOps.fit(image, size, Image.LANCZOS)
 
     # turn the image into a numpy array
     image_array = np.asarray(image)

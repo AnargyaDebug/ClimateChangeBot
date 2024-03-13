@@ -27,6 +27,7 @@ async def classify(ctx):
     else:
         await ctx.send("You forgot to upload the image >:(")
 
+
 @bot.command("chemical_waste")
 async def chemical_waste(ctx):
     images = ("sample1.jpg", "sample2.jpg", "sample3.jpg", "sample4.jpg", "sample5.jpg", "sample6.jpg", "sample7.jpg", "sample8.jpg", "sample9.jpg", "sample10.jpg")
@@ -69,6 +70,18 @@ async def organic_waste(ctx):
     await ctx.send("Examples of organic waste include leftover food, fruit peels, tissue/toilet paper, paper, and more.")
     await ctx.send(file=img)
 
+
+ async def check(ctx):
+    if ctx.message.attachments:
+        for attachment in ctx.message.attachments:
+            image_path = attachment.filename
+            await attachment.save(f"../{attachment.filename}")
+            result = classify(model_path="res\classify\keras_model.h5", labels_path="res\classify\labels.txt", image_path=f"../{attachment.filename}")
+            await ctx.send(result)
+    else:
+        await ctx.send("You forgot to upload the image >:(")
+
+        
 @bot.command("recycletrashtips")
 async def recycling_tips(ctx):
     await ctx.send("""
